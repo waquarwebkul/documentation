@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-19 08:39+0000\n"
+"POT-Creation-Date: 2024-03-19 14:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -482,7 +482,7 @@ msgstr ""
 msgid "From the menu that appears, select :guilabel:`Edit Stage`. This will open the stage's settings. Check the box labeled :guilabel:`Folded in Kanban` towards the top of the window, and then :guilabel:`Save & Close` to confirm the changes. Now, tickets that reach this stage will be considered as *closed*."
 msgstr ""
 
-#: ../../content/applications/services/helpdesk/advanced/close_tickets.rst:0
+#: ../../content/applications/services/helpdesk/advanced/close_tickets.rst:36
 msgid "Stage settings page."
 msgstr ""
 
@@ -1050,7 +1050,7 @@ msgstr ""
 
 #: ../../content/applications/services/helpdesk/overview/getting_started.rst:137
 #: ../../content/applications/services/helpdesk/overview/ratings.rst:60
-msgid ":doc:`/applications/general/email_communication/email_template`"
+msgid ":doc:`/applications/general/companies/email_template`"
 msgstr ""
 
 #: ../../content/applications/services/helpdesk/overview/getting_started.rst:140
@@ -1061,7 +1061,7 @@ msgstr ""
 msgid "Make a selection in the :guilabel:`Teams` field on the :guilabel:`Stages` form. More than one team may be selected, since the same stage(s) can be assigned to multiple teams."
 msgstr ""
 
-#: ../../content/applications/services/helpdesk/overview/getting_started.rst:0
+#: ../../content/applications/services/helpdesk/overview/getting_started.rst:145
 msgid "View of stage setup emphasizing teams field"
 msgstr ""
 
@@ -2232,7 +2232,7 @@ msgid ":doc:`Start receiving tickets </applications/services/helpdesk/overview/r
 msgstr ""
 
 #: ../../content/applications/services/helpdesk/overview/reports.rst:227
-msgid ":doc:`Odoo reporting </applications/general/reporting>`"
+msgid ":doc:`Odoo reporting </applications/essentials/reporting>`"
 msgstr ""
 
 #: ../../content/applications/services/helpdesk/overview/sla.rst:3
