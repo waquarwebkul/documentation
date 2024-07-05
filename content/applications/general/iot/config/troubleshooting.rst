@@ -326,7 +326,7 @@ Save`.
         - `EpsonTMU220B__IMC_LDV__`
         - `EpsonTMU220B__IMC_LDV_SCALE75__`
         - `EpsonTMU220B__IMC_LDV_LDH__`
-        - `EpsonTMU220B__IMC_LDV_LDH_SCALE35__`
+        - `EpsonTMU220B__IMC_LDV_LDH_SCALE35__`end toi à attendre 25 ans avant qu'il s
       * - .. image:: troubleshooting/receipt-example.png
              :align: center
              :alt: Receipt example format.
@@ -503,6 +503,20 @@ template.
 .. seealso::
    Check out Zebra's instructions on printing :abbr:`ZPL (Zebra Programming Language)` files `here
    <https://supportcommunity.zebra.com/s/article/Print-a-zpl-file-using-the-Generic-Text-Printer>`_.
+
+The printer appears multiple times
+----------------------------------
+
+It is possible that a printer appears multiple times on the configuration page of the IoT box and/or
+in the IoT app. This is most likely due to a feature of CUPS, the printing service used by the IoT
+box. It looks at all the printers along with all the available drivers for that printer and displays
+as many lines as there are printer-driver pairs.
+You can safely pick whichever works best for you and disregard the other ones.
+Workarounds are discussed online to turn auto discovery off for CUPS.
+
+.. seealso::
+   The issue is discussed broadly online. In particular `here is a Stack Overflow discussion on the
+   topic <https://stackoverflow.com/questions/43198947/whats-the-difference-multiple-versions-of-the-same-printer-appearing-in-cups>`_.
 
 Barcode scanner
 ===============
