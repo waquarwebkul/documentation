@@ -326,7 +326,7 @@ Save`.
         - `EpsonTMU220B__IMC_LDV__`
         - `EpsonTMU220B__IMC_LDV_SCALE75__`
         - `EpsonTMU220B__IMC_LDV_LDH__`
-        - `EpsonTMU220B__IMC_LDV_LDH_SCALE35__`end toi à attendre 25 ans avant qu'il s
+        - `EpsonTMU220B__IMC_LDV_LDH_SCALE35__`
       * - .. image:: troubleshooting/receipt-example.png
              :align: center
              :alt: Receipt example format.
