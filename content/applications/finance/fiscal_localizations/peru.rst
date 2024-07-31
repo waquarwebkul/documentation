@@ -320,7 +320,7 @@ document types available in Peru. By default, all the sales journals created use
 Electronic Data Interchange
 ***************************
 
-This  section indicates which EDI workflow is used in the invoice, for Peru we must select
+This section indicates which EDI workflow is used in the invoice, for Peru we must select
 “Peru UBL 2.1”.
 
 .. image:: peru/peru-journal-edi.png
@@ -407,6 +407,8 @@ OSE and the SUNAT. The following message is displayed at the top of the invoice:
 
 Asynchronous means that the document is not sent automatically after the invoice has been posted.
 
+.. _peru/electronic-invoice-status:
+
 Electronic Invoice Status
 *************************
 
@@ -453,7 +455,6 @@ If a validation error is received, you have two options:
   .. image:: peru/peru-errors.png
      :align: center
      :alt: List of common errors on invoices
-
 
 For more detail please refert to `Common errors in SUNAT
 <https://www.nubefact.com/codigos-error-sunat/>`_.
@@ -870,3 +871,149 @@ Common errors
   Odoo currently throws an error with a traceback instead of a message that the credentials are not
   correctly configured in the database. If this occurs on your database, please verify your
   credentials.
+
+eCommerce electronic invoicing
+------------------------------
+
+First :ref:`install <general/install>` the **Peruvian eCommerce** (`l10n_pe_website_sale`) module
+from :menuselection:`Apps`.
+
+The **Peruvian eCommerce** module enables the features and configurations to:
+
+- allow clients to create online accounts for **eCommerce** purposes;
+- support required fiscal fields in the **eCommerce** application;
+- receive payments for sales orders online;
+- generate electronic documents from the **eCommerce** application.
+
+.. note::
+   The **Peruvian eCommerce** module is dependent on the previous installation of the
+   **Invoicing** or **Accounting** app.
+
+.. _peru/ecommerce-configuration:
+
+Configuration
+~~~~~~~~~~~~~
+
+Once all of the configurations are made for the Peruvian :ref:`electronic invoice
+<peru/accounting-settings>` flow, it is also necessary to complete certain configurations for the
+**eCommerce** flow to be integrated.
+
+Client account registration
+***************************
+
+It is possible to configure your website to use the following options regarding client accounts by
+navigating to :menuselection:`Website --> Configuration --> Settings --> Shop: Checkout Process`:
+
+- :guilabel:`Optional`: allows guests on the website to register directly in the confirmation email
+  from their order.
+- :guilabel:`Disabled (buy as guest)`: allows guests to buy and pay without an account.
+- :guilabel:`Mandatory (no guest checkout)`: requires the guest to create an account to be able to
+  buy and pay on the website.
+
+.. note::
+   It is recommended to use the *Optional* or *Mandatory* option, since this will save the contact
+   and their fiscal information for future purchases.
+
+Automatic invoice
+*****************
+
+Configure your website to generate electronic documents in the sale process by going to
+:menuselection:`Website --> Configuration --> Settings --> Invoicing`. Activate the
+:guilabel:`Automatic Invoice` feature to automatically generate the required electronic documents
+when the online payment is confirmed.
+
+Since an online payment needs to be confirmed for the :guilabel:`Automatic Invoice` feature to
+generate the document, a :guilabel:`payment provider` should be configured for the related website.
+
+.. note::
+   Review the :doc:`../payment_providers` documentation for information on which payment providers
+   are supported in Odoo and how to configure them.
+
+Products
+********
+
+To be able to invoice your products at the point of an online payment confirmation, go to
+:menuselection:`Website --> eCommerce --> Products` and select the desired product. Then, set the
+:guilabel:`Invoicing Policy` to :guilabel:`Ordered quantities`.
+
+Also, it is important to define the desired :guilabel:`Customer taxes`, since this is a required
+field when creating an invoice that will be part of an electronic invoice flow.
+
+If you have multiple websites, make sure you select a specific :guilabel:`Website` on the
+:guilabel:`Sales` tab if you want to restrict that product to be only published on one of your
+websites.
+
+Payment providers
+*****************
+
+To allow the purchase process to invoice the transaction, it is required to first select and
+configure one or more :doc:`payment providers <../payment_providers>`.
+
+.. note::
+   `Mercado Pago <https://www.mercadopago.com/>`_ is an online payment provider supported in Odoo
+   that covers several countries, currencies, and payment methods in Latin America.
+
+.. seealso::
+   :doc:`Set up the Mercado Pago payment provider <../payment_providers/mercado_pago>`
+
+Shipping method
+***************
+
+To manage the shipping methods, navigate to :menuselection:`Website --> Configuration --> eCommerce:
+Shipping Methods`. For each shipping method, be sure to set the :guilabel:`Provider` as
+:guilabel:`Fixed Price`. Then, set a :guilabel:`Fixed Price` amount greater than `0.00` (not zero),
+as the shipping method price will be added to the invoice line.
+
+When setting up the shipping method, a :guilabel:`Delivery Product` is selected. On the selected
+delivery product, it is required to define a *Sales Price* and *Customer taxes*, as both fields are
+mandatory on the invoice line level, when completing the purchase.
+
+Lastly, publish the shipping method by clicking on the red :icon:`fa-globe` :guilabel:`Unpublished`
+smart button. In doing so, the smart button changes to a green :icon:`fa-globe`
+:guilabel:`Published` button.
+
+.. important::
+   Not defining a *Sales Price* on the :guilabel:`Delivery Product` of the shipping method can cause
+   an error when validating the invoice with |SUNAT|, as it is required to have a defined
+   *Quantity*, *Price* and *Tax* per invoice line.
+
+.. note::
+   If you will be offering free delivery, then you would have to manually remove the
+   :guilabel:`Delivery Product`, or at least use `$0.01` (one cent) for the invoice to be validated
+   with SUNAT.
+
+   .. image:: peru/l10npe-free-shipping-invoicing-pe-ecommerce.png
+      :alt: Free shipping configuration for Peruvian eCommerce.
+
+Invoicing flow for eCommerce
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once the :ref:`configurations <peru/ecommerce-configuration>` are all set, the following sections
+cover the invoicing flow.
+
+Client account creation
+***********************
+
+If the client does not have an account on your website already, they can create a new one from the
+:menuselection:`Website` by clicking :guilabel:`Sign In` and then :guilabel:`Don't have an account?`
+button.
+
+If you want to manage the clients' access in the backend, review the
+:doc:`../../general/users/portal` documentation.
+
+Input fiscal fields in the checkout process
+*******************************************
+
+As mentioned above, fiscal field inputs are available in the checkout process. Entering fiscal data
+enables the purchase to create the corresponding electronic document.
+
+When the client makes a successful purchase and payment, the invoice is generated with the
+corresponding |EDI| elements, and the document type (Boleta/Factura) is selected based on the tax ID
+defined by the contact (RUC/DNI).
+
+Even though the invoice is created, it needs to :ref:`be sent to the OSE and the SUNAT
+<peru/electronic-invoice-status>`; that can be manually done per invoice, or the default scheduled
+action sends all published invoices once a day.
+
+Once the invoice is validated with |SUNAT|, the user can download the :file:`.zip` with the CDR,
+XML, and PDF directly from the portal view by clicking the :guilabel:`Download` button.
