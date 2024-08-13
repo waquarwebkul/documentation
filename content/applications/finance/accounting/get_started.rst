@@ -22,7 +22,7 @@ Accounting onboarding banner
 
 The step-by-step Accounting onboarding banner is composed of four steps:
 
-.. image:: get_started/setup-accounting-onboarding.png
+.. image:: get_started/accounting-onboarding-banner.png
    :alt: Step-by-step onboarding banner in Odoo Accounting
 
 #. :ref:`accounting-setup-periods`
@@ -119,7 +119,7 @@ If you have Odoo Accounting installed on your database, you can reach it by goin
 
 The Invoicing onboarding banner is composed of four main steps:
 
-.. image:: get_started/setup-invoicing-onboarding.png
+.. image:: get_started/invoicing-onboarding-banner.png
    :alt: Step-by-step onboarding banner in Odoo Invoicing
 
 #. :ref:`invoicing-setup-company`
