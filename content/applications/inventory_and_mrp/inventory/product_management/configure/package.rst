@@ -87,7 +87,7 @@ the above steps to place the :guilabel:`Product` in different packages. Once fin
 
 .. seealso::
    :doc:`Ship one order in multiple packages
-   <../../shipping_receiving/advanced_operations_shipping/multipack>`
+   <../../shipping_receiving/setup_configuration/multipack>`
 
 .. _inventory/warehouses_storage/put-in-pack:
 
@@ -186,6 +186,7 @@ following fields:
 
 .. seealso::
    :doc:`Using cluster packages <../../shipping_receiving/picking_methods/cluster>`
+<<<<<<< saas-17.2
 
 View packages
 =============
@@ -200,3 +201,8 @@ packages are shown in Kanban view, in their current storage location.
    :align: center
    :alt: Packages dashboard.
 
+||||||| dcb0d21b17b52f57159549486a70eb63711c0e03
+   :doc:`Using cluster packages
+   <../../shipping_receiving/picking_methods/cluster>`
+=======
+>>>>>>> ff242df8a9a57735baf812c87b478972aa225bba
