@@ -350,3 +350,4 @@ drop the taxes in the :ref:`order they should be computed <taxes/base-subsequent
    taxes/taxcloud
    taxes/eu_distance_selling
    taxes/B2B_B2C
+   taxes/test
